@@ -21,6 +21,6 @@ def spectralnorm(n):
     for i in range (10):
         v = (u*MT)*M
         u = (v*MT)*M
-    print("%0.9f" % (sum(u*v.T)/sum(v*v.T))**0.5)
+    print(("%0.9f" % (sum(u*v.T)/sum(v*v.T))**0.5))
 
 spectralnorm(int(argv[1]))

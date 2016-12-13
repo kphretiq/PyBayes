@@ -33,5 +33,5 @@ def timed(func):
     def wrapper(self):
         timer = Timer()
         func(self, timer)
-        print "{0}(): {1}".format(func.__name__, timer)
+        print(("{0}(): {1}".format(func.__name__, timer)))
     return wrapper

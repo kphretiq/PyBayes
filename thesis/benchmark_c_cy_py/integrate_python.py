@@ -8,9 +8,9 @@ def integrate(a, b, N):
     dx = (b-a)/N
 
     if dx == 0:
-        print "dx == 0!"
+        print("dx == 0!")
         return 0
 
-    for i in xrange(N):
+    for i in range(N):
         s += f(a + (i + 1./2.)*dx)*dx
     return s

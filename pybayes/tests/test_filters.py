@@ -9,7 +9,7 @@ from copy import copy, deepcopy
 import numpy as np
 
 import pybayes as pb
-from support import PbTestCase, stochastic
+from .support import PbTestCase, stochastic
 
 
 class TestKalmanFilter(PbTestCase):

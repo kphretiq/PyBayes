@@ -18,7 +18,7 @@ from os.path import dirname, join
 import unittest as ut
 
 import pybayes as pb
-from support import timed
+from .support import timed
 
 
 def run_kalman_on_mat_data(input_file, output_file, timer):
@@ -44,7 +44,7 @@ def run_kalman_on_mat_data(input_file, output_file, timer):
     var = np.zeros((N, n))
 
     timer.start()
-    for t in xrange(1, N):  # the 1 start offset is intentional
+    for t in range(1, N):  # the 1 start offset is intentional
         kalman.bayes(y[t], u[t])
         mean[t] = kalman.posterior().mean()
         #var[t]  = kalman.posterior().variance()
@@ -68,7 +68,7 @@ class PfOptionsA(object):
     """Class that represents options for a particle filter"""
 
     def __init__(self, nr_steps):
-        print "Generating random data for particle filter stresses A..."
+        print("Generating random data for particle filter stresses A...")
         self.nr_steps = nr_steps
 
         # prepare random variable components:
@@ -140,8 +140,8 @@ def run_pf(timer, pf_opts, nr_particles, pf_class):
         mean[i] = pf.posterior().mean()
     timer.stop()
     cumerror = np.sum((mean - x_t)**2, 0)
-    print "  {0}-{3} cummulative error for {1} steps: {2}".format(
-        nr_particles, nr_steps, np.sqrt(cumerror), pf_class.__name__)
+    print(("  {0}-{3} cummulative error for {1} steps: {2}".format(
+        nr_particles, nr_steps, np.sqrt(cumerror), pf_class.__name__)))
     plt = None  # disable plotting for now
     if plt:
         x = np.arange(nr_steps)

@@ -9,7 +9,7 @@ import math
 import numpy as np
 
 import pybayes.wrappers._linalg as linalg
-from support import PbTestCase
+from .support import PbTestCase
 
 
 def test_inv_func(self):

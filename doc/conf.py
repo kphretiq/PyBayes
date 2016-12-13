@@ -40,8 +40,8 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'PyBayes'
-copyright = u'2010, Matěj Laitl'
+project = 'PyBayes'
+copyright = '2010, Matěj Laitl'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -177,8 +177,8 @@ htmlhelp_basename = 'PyBayesdoc'
 latex_documents = [
   ('index',  # startdocname
    'PyBayes.tex',  # targetname
-   u'PyBayes API Documentation',  # title
-   u'Matěj Laitl',  # author
+   'PyBayes API Documentation',  # title
+   'Matěj Laitl',  # author
    'manual',  # documentclass: manual | howto
    True  # toctree_only
   ),
@@ -218,8 +218,8 @@ latex_elements = {
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'pybayes', u'PyBayes Documentation',
-     [u'Matěj Laitl'], 1)
+    ('index', 'pybayes', 'PyBayes Documentation',
+     ['Matěj Laitl'], 1)
 ]
 
 

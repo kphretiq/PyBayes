@@ -1520,16 +1520,16 @@ class ProdCPdf(CPdf):
                     break;
             else:
                 # we are stuck somewhere in data chain
-                print "Appropriate pdf not found. avail_rvcomps:", avail_rvcomps, "candidates:"
+                print(("Appropriate pdf not found. avail_rvcomps:", avail_rvcomps, "candidates:"))
                 for factor in factors:
-                    print "  ", factor, "with cond_rv:", factor.cond_rv
+                    print(("  ", factor, "with cond_rv:", factor.cond_rv))
                 raise AttributeError("Cannont construct data chain. This means "
                     + "that it is impossible to arrange factor pdfs into a DAG "
                     + "that starts with ProdCPdf's cond_rv components. Please "
                     + "check cond_rv and factor rvs and cond_rvs.")
         if not rv.contained_in(avail_rvcomps):
-            print "These components can be computed:", avail_rvcomps
-            print "... but we have to fill following rv:", rv
+            print(("These components can be computed:", avail_rvcomps))
+            print(("... but we have to fill following rv:", rv))
             raise AttributeError("Data chain built, some components cannot be "
                 + "computed with it.")
 

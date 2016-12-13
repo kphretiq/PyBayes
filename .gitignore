@@ -3,5 +3,8 @@
 /build
 /dist
 /doc/_build
+/venv
+.env
 *~
 *.pyc
+*.swp

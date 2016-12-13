@@ -7,7 +7,7 @@
 import numpy as np
 
 import pybayes.wrappers._numpy as nw
-from support import PbTestCase
+from .support import PbTestCase
 
 
 class TestWrappersNumpy(PbTestCase):

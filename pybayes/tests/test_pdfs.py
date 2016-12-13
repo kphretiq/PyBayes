@@ -10,7 +10,7 @@ from math import e, erf, exp, log, pi, sqrt
 import numpy as np
 
 import pybayes as pb
-from support import PbTestCase, stochastic
+from .support import PbTestCase, stochastic
 
 
 class TestRVComp(PbTestCase):
@@ -18,11 +18,11 @@ class TestRVComp(PbTestCase):
 
     def test_init(self):
         rvcomp = pb.RVComp(123, "pretty name")
-        self.assertEquals(rvcomp.name, "pretty name")
-        self.assertEquals(rvcomp.dimension, 123)
+        self.assertEqual(rvcomp.name, "pretty name")
+        self.assertEqual(rvcomp.dimension, 123)
         rvcomp = pb.RVComp(345)
-        self.assertEquals(rvcomp.name, None)
-        self.assertEquals(rvcomp.dimension, 345)
+        self.assertEqual(rvcomp.name, None)
+        self.assertEqual(rvcomp.dimension, 345)
 
     def test_invalid_init(self):
         self.assertRaises(TypeError, pb.RVComp, 0.45)  # non-integer dimension
@@ -42,19 +42,19 @@ class TestRV(PbTestCase):
         comp_a = pb.RVComp(1, "a")
         comp_b = pb.RVComp(2, "b")
         rv_1 = pb.RV(comp_a, comp_b)
-        self.assertEquals(rv_1.name, "[a, b]")
-        self.assertEquals(rv_1.dimension, 3)
+        self.assertEqual(rv_1.name, "[a, b]")
+        self.assertEqual(rv_1.dimension, 3)
         self.assertTrue(rv_1.contains(comp_a))
         self.assertTrue(rv_1.contains(comp_b))
         rv_2 = pb.RV(rv_1)
-        self.assertEquals(rv_2.name, "[a, b]")
-        self.assertEquals(rv_2.dimension, 3)
+        self.assertEqual(rv_2.name, "[a, b]")
+        self.assertEqual(rv_2.dimension, 3)
         self.assertTrue(rv_2.contains(comp_a))
         self.assertTrue(rv_2.contains(comp_b))
 
         empty_rv = pb.RV()
-        self.assertEquals(empty_rv.dimension, 0)
-        self.assertEquals(empty_rv.name, "[]")
+        self.assertEqual(empty_rv.dimension, 0)
+        self.assertEqual(empty_rv.name, "[]")
 
     def test_invalid_init(self):
         self.assertRaises(TypeError, pb.RV, 0.46)
@@ -335,14 +335,14 @@ class TestGaussPdf(PbTestCase):
             0.000133830225765,
             1.48671951473e-06,
         ])
-        for i in xrange(0, 11):
+        for i in range(0, 11):
             x[0] = i - 5.
             res = exp(norm.eval_log(x))
             self.assertApproxEqual(res, expected[i])
 
         # same variance, non-zero mean:
         norm = pb.GaussPdf(np.array([17.9]), np.array([[1.]]))
-        for i in xrange(0, 11):
+        for i in range(0, 11):
             x[0] = i - 5. + 17.9
             res = exp(norm.eval_log(x))
             self.assertApproxEqual(res, expected[i])
@@ -362,7 +362,7 @@ class TestGaussPdf(PbTestCase):
             0.060428346749642113,
             0.044766420317807747,
         ])
-        for i in xrange(0, 11):
+        for i in range(0, 11):
             x[0] = (i - 5.)
             res = exp(norm.eval_log(x))
             self.assertApproxEqual(res, expected[i])
@@ -765,14 +765,14 @@ class TestProdPdf(PbTestCase):
         gauss = pb.GaussPdf(np.array([0.]), np.array([[1.]]), pb.RV(c))
         prod = pb.ProdPdf((uni, gauss))
 
-        self.assertEquals(prod.rv.name, "[a, b, c]")
+        self.assertEqual(prod.rv.name, "[a, b, c]")
         for rv_comp in a, b, c:
             self.assertTrue(prod.rv.contains(rv_comp))
 
         # that that custom rv passed to constructor is accepted
         d = pb.RVComp(3, "d")
         prod_custom = pb.ProdPdf((uni, gauss), pb.RV(d))
-        self.assertEquals(prod_custom.rv.name, "[d]")
+        self.assertEqual(prod_custom.rv.name, "[d]")
         self.assertTrue(prod_custom.rv.contains(d))
         self.assertFalse(prod_custom.rv.contains(a))
         self.assertFalse(prod_custom.rv.contains(b))
@@ -936,7 +936,7 @@ class TestMLinGaussCPdf(PbTestCase):
             0.000133830225765,
             1.48671951473e-06,
         ])
-        for i in xrange(0, 11):
+        for i in range(0, 11):
             # cond is set to [1.], which should produce mean = [0.]
             x[0] = i - 5.
             cond[0] = 1.
