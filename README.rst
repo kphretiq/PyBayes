@@ -9,6 +9,7 @@ This is *not* the strohelPyBayes_ you are looking for. This has had 2to3 run on 
     for i in $(find -type f -name "*.py"); do 2to3 -w -n $i; done
 
 . . . and tested about as thorougly as you'd expect, which is to say, not in any systematic way. If you are thinking about installing this via pip, then you may have a bad day in the future. And we **like** future you, don't we?
+
 .. _strohelPyBayes: https://github.com/strohel/PyBayes
 
 About
